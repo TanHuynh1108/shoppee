@@ -5,10 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Shoppee</title>
-        <link rel="icon" href="./assets/img/logo.png" type="image/x-icon" />
+        <link rel="icon" href="./assets/img/logo.png" type="image/x-icon" /> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/main.css">
+        <link rel="stylesheet" href="./assets/css/grid.css">
+        <link rel="stylesheet" href="./assets/css/responsive.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
@@ -19,8 +21,8 @@
     <body>
         <div class="app">
             <header class="header">
-                <div class="grid">
-                    <nav class="header__navbar">
+                <div class="grid wide">
+                    <nav class="header__navbar hide-one-mobile-tablet">
                         <ul class="header__navbar-list">
                             <li class="header__navbar-item header__navbar-item--seperate">
                                 <a href="" class="header__navbar-item-link">Kênh Người Bán</a>
@@ -144,7 +146,7 @@
                                 </div>
                             </li>
                             <li class="header__navbar-item ">
-                                <a href="" class="header__navbar-item-link header__navbar-item-link--bold header__navbar-item--seperate js-register">Đăng Kí</a>
+                                <a href="" class="header__navbar-item-link header__navbar-item-link--bold header__navbar-item--seperate">Đăng Kí</a>
                             </li>
                             <li class="header__navbar-item">
                                 <a href="" class="header__navbar-item-link header__navbar-item-link--bold">Đăng Nhập</a>
@@ -172,7 +174,39 @@
                     </nav>
                     <!-- Header with search -->
                     <div class="header-with-search">
-                        <div class="header__logo">
+                        <label for="mobile-tablet__checkbox" class="mobile-tablet__contain">
+                            <i class="fas fa-list"></i>
+                        </label>
+                        <input type="checkbox" hidden name="" class="nav__input" id="mobile-tablet__checkbox">
+                        <label for="mobile-tablet__checkbox" class="mobile-tablet__overlay"></label>
+                        <nav class="mobile-tablet__nav">
+                            <img src="./assets/img/user.png" alt="" class="mobile-tablet__nav-user">
+                            <label for="mobile-tablet__checkbox" class="mobile-tablet__nav-close">
+                                <i class="fas fa-times"></i>
+                            </label>
+                            <ul class="mobile-tablet__list">
+                                <li class="mobile-tablet__item">
+                                    <a href="" class="mobile-tablet__link">Đăng Kí</a>
+                                </li>
+                                <li class="mobile-tablet__item">
+                                    <a href="" class="mobile-tablet__link">Đăng Nhập</a>
+                                </li>
+                                <li class="mobile-tablet__item">
+                                    <a href="" class="mobile-tablet__link">Tạo Tài Khoản VIP</a>
+                                </li>
+                                <li class="mobile-tablet__item">
+                                    <a href="" class="mobile-tablet__link">Liên hệ</a>
+                                </li>
+                                <li class="mobile-tablet__item">
+                                    <a href="" class="mobile-tablet__link">Trở thành người bán Shoppee</a>
+                                    <i class="mobile-tablet__item-icon fab fa-teamspeak"></i>
+                                </li>
+                            </ul>
+                        </nav>
+                        <label for="mobile-search-checkbox" class="header__mobile-search">
+                            <i class="header__mobile-search-icon fas fa-search"></i>
+                        </label>
+                        <div class="header__logo hide-on-tablet">
                            <a href="/" class="header__logo-link">
                             <svg viewBox="0 0 192 65" class="header__logo-img">
                                 <g fill-rule="evenodd">
@@ -183,6 +217,7 @@
                             </svg>
                            </a>
                         </div>
+                    <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
                         <div class="header__search">
                             <div class="header__search-input-wrap">
                                 <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">
@@ -228,8 +263,11 @@
                         <!-- Cart Layout -->
                         <div class="header__cart">
                             <div class="header__cart-wrap">
-                                <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                <span class="header__cart-notice">5</span>
+                                <label for="header__cart-wrap-check" class="header__cart-wrap-label">
+                                    <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                    <span class="header__cart-notice">5</span>
+                                </label>
+                                <input type="checkbox" hidden id="header__cart-wrap-check" class="header__cart-wrap-input">
                                 <!-- No cart add class: header__cart-list--no-cart -->
                                 <div class="header__cart-list">
                                     <img src="./assets/img/no product yet.png" alt="" class="header__cart--no-cart-img">
@@ -251,6 +289,7 @@
                                                 <div class="header__cart-item-body">
                                                     <span class="header__cart-item-description">Phân loại hạng bình thường, phù hợp mọi người dùng</span>
                                                     <span class="header__cart-item-remove">Xóa</span>
+                                                    <i class='header__cart-item-bin bx bx-trash'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -268,6 +307,7 @@
                                                 <div class="header__cart-item-body">
                                                     <span class="header__cart-item-description">Phân loại hạng cao cấp, tạo vẻ sang trọng, lịch thiệp</span>
                                                     <span class="header__cart-item-remove">Xóa</span>
+                                                    <i class='header__cart-item-bin bx bx-trash'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -285,6 +325,7 @@
                                                 <div class="header__cart-item-body">
                                                     <span class="header__cart-item-description">Phân loại hạng bình thường, phù hợp mọi người dùng</span>
                                                     <span class="header__cart-item-remove">Xóa</span>
+                                                    <i class='header__cart-item-bin bx bx-trash'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -302,6 +343,7 @@
                                                 <div class="header__cart-item-body">
                                                     <span class="header__cart-item-description">Phân loại hạng thương gia</span>
                                                     <span class="header__cart-item-remove">Xóa</span>
+                                                    <i class='header__cart-item-bin bx bx-trash'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -319,6 +361,7 @@
                                                 <div class="header__cart-item-body">
                                                     <span class="header__cart-item-description">Phân loại hạng vàng, thích hợp cho học sinh ,sinh viên</span>
                                                     <span class="header__cart-item-remove">Xóa</span>
+                                                    <i class='header__cart-item-bin bx bx-trash'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -327,13 +370,44 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="header__cart-user ">
+                            <label for="header__cart-user-check" class="header__cart-user-icon-link">
+                                <i class="header__cart-user-icon fas fa-user"></i>
+                            </label>
+                            <input type="checkbox" hidden id="header__cart-user-check" class="header__cart-user-input">
+                            <label for="header__cart-user-check" class="header__cart-user-overlay"></label>
+                            <div class="header__cart-sign-in">
+                                <h3 class="header__cart-introduction">Đăng nhập / Đăng ký với số điện thoại</h3>
+                                <input type="number" class="header__cart-input" placeholder="Số điện thoại">
+                                <div class="header__cart-out">
+                                    <label for="header__cart-user-check" class="header__cart-return">TRỞ LẠI</label>
+                                    <button class="header__cart-button">NHẬN MÃ KÍCH HOẠT</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <ul class="header__sort-bar">
+                    <li class="header__sort-item">
+                        <a href="#app__content" class="header__sort-link">Liên quan</a>
+                    </li>
+                    <li class="header__sort-item header__sort-item--active">
+                        <a href="#app__content" class="header__sort-link">Mới nhất</a>
+                    </li>
+                    <li class="header__sort-item">
+                        <a href="#app__content" class="header__sort-link">Bán chạy</a>
+                    </li>
+                    <li class="header__sort-item">
+                        <a href="#app__content" class="header__sort-link">Giá</a>
+                        <i class='header__sort-bar-icon-up bx bxs-chevron-up'></i>
+                        <i class='header__sort-bar-icon-down bx bxs-chevron-down' ></i>
+                    </li>
+                </ul>
             </header>
             <div class="app__container">
-                <div class="grid">
-                    <div class="grid__row app__content">
-                        <div class="grid__column-2">
+                <div class="grid wide">
+                    <div class="row sm-gutter" id="app__content">
+                        <div class="col l-2 m-0 c-0">
                             <nav class="category">
                                 <h3 class="category-heading">
                                     <i class="category-heading-icon fas fa-list-ul"></i>
@@ -352,8 +426,8 @@
                                 </ul>
                             </nav>
                         </div>
-                        <div class="grid__column-10">
-                            <div class="home-filter">
+                        <div class="col l-10 m-12 c-12">
+                            <div class="home-filter hide-one-mobile-tablet">
                                 <span class="home-filter__title">Sắp Xếp Theo</span>
                                 <button class="home-filter__btn btn btn-primary">Phổ Biến</button>
                                 <button class="home-filter__btn btn">Mới Nhất</button>
@@ -386,10 +460,44 @@
                                     </div>
                                 </div>
                             </div>
+                            <nav class="mobile-category">
+                                <ul class="mobile-category__list">
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Nam</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Nữ</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Apple Watch</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Da</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Rolex</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Mĩ</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Hàn Quốc</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Singapore</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Việt Nam</a>
+                                    </li>
+                                    <li class="mobile-category__item">
+                                        <a href="" class="mobile-category-link">Đồng Hồ Thụy Sĩ</a>
+                                    </li>
+                                </ul>
+                            </nav>
                             <div class="home-product">
-                                <div class="grid__row">
+                                <div class="row sm-gutter">
                                     <!-- Product item -->
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/7193c20e9c750a27ab8a0dfb15cb2028_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng Hồ Nam Chính Hãng POEDAGAR Dây Thép Đúc Đặc Phong Cách Thời Trang Doanh Nhân Đẹp Sang Trọng Có Lịch Ngày</h4>
@@ -426,7 +534,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/5a7414e77847e9752b8f17504699ffaa_tn);"></div>
                                             <h4 class="home__product-item__name">Apple Watch Series 7 Nhôm GPS Dây Thể Thao</h4>
@@ -463,7 +571,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/abf2a3933d4b1dbca8a006930ba788e4_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ nữ guou quai silicol mặt chữ nhật siêu hot 2021 bản dây aple donghonu (video ảnh thật)</h4>
@@ -500,7 +608,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/f22a726e7c9c62f9d71a1314a3f080f1_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng Hồ Đeo Tay Nữ Mặt Tròn Dây Da Thời Trang Hàn Quốc </h4>
@@ -537,7 +645,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/08cb9e493c8dd567b0f5804e01fba461_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ đeo tay nữ phát sáng dây vải nhiều màu chống nước thời trang Hàn Quốc </h4>
@@ -574,7 +682,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/ef9f25ba6f116f4d4e22bf1f951a3c1c_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ nữ Modya MDA02 dây da mặt viền xoàn đính đá cực đẹp</h4>
@@ -611,7 +719,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/95502f6b734618070e3be15ea5694fdc_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ thạch anh WISHDOIT đơn giản chống thấm nước bằng thép không gỉ có hiển thị lịch</h4>
@@ -649,7 +757,7 @@
                                         </a>
                                     </div>
                                    
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/d86cfc17a08e41cdd167339017310b5c_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ Nam Rolex máy nhật, mẫu 3kim cắt vát mặt xanh viền vàng, dòng cơ Automatic size 40mm-41mm</h4>
@@ -686,7 +794,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/64dc147de3eb229293da5b83c11ba837_tn);"></div>
                                             <h4 class="home__product-item__name">Đồng hồ Nam Rolex máy nhật, mẫu 3kim cắt vát mặt đen viền vàng dây da, dòng cơ Automatic size 40mm-41mm</h4>
@@ -723,7 +831,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="grid__column-2-4">
+                                    <div class="col l-2-4 m-4 c-6">
                                         <a class="home-product-item" href="#">
                                             <div class="home__product-item__img" style="background-image: url(https://cf.shopee.vn/file/d2a2d0a94276059eb52197e0b08a6e14_tn);"></div>
                                             <h4 class="home__product-item__name">ĐỒNG HỒ GENEVA NỮ LƯỚI MẠ VÀNG VÀ BẠC GE1</h4>
@@ -800,9 +908,9 @@
                 </div>
             </div>
             <footer class="footer">
-                <div class="grid">
-                    <div class="grid__row">
-                        <div class="grid__column-2-4">
+                <div class="grid wide footer__content">
+                    <div class="row">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">Chăm sóc khách hàng</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -840,7 +948,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">Về Shoppee</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -873,7 +981,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">Thanh toán</h3>
                             <ul class="footer-list footer-item__payment">
                                 <li class="footer-item__icon-payment footer-item ">
@@ -929,7 +1037,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">Theo dõi chúng tôi trên</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -952,7 +1060,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-8 c-12">
                             <h3 class="footer__heading">Tải ứng dụng Shoppee ngay thôi</h3>
                             <div class="footer__download">
                                 <img src="./assets/img/qrcode_chrome.png"" alt="Download QR" class="footer__download-qr">
@@ -972,7 +1080,7 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <div class="grid">
+                    <div class="grid wide">
                         <ul class="policy-list">
                             <li class="policy-item">
                                 <a href="" class="policy-link policy-link__separate">Chính sách bảo mật</a>
@@ -995,7 +1103,7 @@
                         <p class="policy-identify-name-company">Công ty TNHH Horizone</p>
                         <div class="contact-with">
                             <p class="contact-with-detail">Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh, Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 19001221 - Email: cskh@hotro.horizone.vn</p>
-                            <p class="contact-with-detail">Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Trí - Điện thoại liên hệ: 024 73081221 (ext 4678)</p>
+                            <p class="contact-with-detail">Chịu Trách Nhiệm Quản Lý Nội Dung: Huỳnh Phước Tấn - Điện thoại liên hệ: 024 73081221 (ext 4678)</p>
                             <p class="contact-with-detail">Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015</p>
                         </div>
                         <p class="footer-text">© 2022 - Bản quyền thuộc về Công ty Horizone</p>
@@ -1003,14 +1111,14 @@
                 </div>
             </footer>  
             <!-- Modal layout -->
-            <div class="modal open js-modal">
+            <div class="modal">
                 <div class="modal__body">
                     <!-- Register inform -->
-                    <div class="authen-form js-modal-register"> 
+                    <div class="authen-form "> 
                         <div class="authen-form__container">
                             <div class="authen-form__header">
                                 <h3 class="authen-form__heading">Đăng Kí</h3>
-                                <span class="authen-form__switch-btn js-sign-in">Đăng Nhập</span>
+                                <span class="authen-form__switch-btn ">Đăng Nhập</span>
                             </div>
                             <div class="authen-form__body">
                                 <div class="authen-form__group">

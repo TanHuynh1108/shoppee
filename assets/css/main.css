@@ -1,3 +1,4 @@
+
 .header {
     height: var(--header-height);
     background-image:linear-gradient(0,#fd6132,#f6432e);
@@ -391,7 +392,7 @@
 .authen-form-sign-in {
     display: none;
 }
-.authen-form-sign-in.open {
+.authen-form-sign-in {
     display: block;
 }
 .authen-form__container {
@@ -532,12 +533,108 @@
    align-items: center;
    margin: 0 8px;
 }
+.mobile-tablet__contain {
+    font-size: 2rem;
+    position: relative;
+    color: var(--white-color);
+    display: none
+}
+.mobile-tablet__nav {
+    width: 250px;
+    height: 100vh;
+    background-color: #c7f6b6;
+    top:0;
+    padding-left: 0;
+    margin: 0;
+    overflow: hidden;
+    left:0;
+    bottom:0;
+    border-radius: 5px;
+    box-shadow: 0 2px 15px rgba(0 , 0 , 0 , 0.1);
+    z-index: 2;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform linear 0.3s, opacity linear 0.2s;
+}
+.mobile-tablet__overlay {
+    position: fixed;
+    top:0;
+    right:0;
+    bottom: 0;
+    left:0;
+    background-color: rgba(0 , 0 , 0 , 0.3);
+    z-index: 1;
+    display: none;
+    animation: FadeIn linear 0.3s;
+}
+.mobile-tablet__nav-user {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin: 5px 90px;
+}
+.mobile-tablet__list {
+    position: absolute;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.nav__input:checked ~ .mobile-tablet__overlay {
+    display: block;
+}
+.nav__input:checked ~ .mobile-tablet__nav {
+    transform: translateX(0);
+    opacity: 1;
+}
+.mobile-tablet__item {
+    padding: 18px 10px;
+}
+.mobile-tablet__link {
+    text-decoration: none;
+    font-size: 2rem;
+    color: blue;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    line-height: 3rem;
+    width: 170px;
+}
+.mobile-tablet__link:hover {
+    color: var(--primary-color);
+}
+.mobile-tablet__item-icon {
+    font-size: 3rem;
+    float: right;
+    position: relative;
+    top: -30px;
+}
+.mobile-tablet__nav-close  {
+    font-size: 2rem;
+    color: #666;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+.header__mobile-search {
+    padding: 0 12px;
+    display: none;
+}
+.header-with-search .header__mobile-search-icon {
+    font-size: 2.6rem;
+    color: var(--white-color);
+}
 .header__logo {
     width: 200px;
 }
 .header__logo-link {
     color: transparent;
     text-decoration: none;
+    display: block;
+    line-height: 0;
+}
+.header__search-checkbox:checked ~ .header__search {
+    display: flex;
 }
 .header__logo-img {
     width: 150px;
@@ -589,8 +686,9 @@
     position: relative;
     display: inline-block;
     padding: 0 12px;
+    -webkit-tap-highlight-color: transparent;
 }
-.header__cart-wrap:hover .header__cart-list {
+.header__cart-wrap-input:checked ~ .header__cart-list {
     display: block;
     transform-origin: calc(100% - 32px) top;
     animation: HeaderNotifyGrown ease-in 0.3s; 
@@ -652,7 +750,7 @@
 .header__cart-list-item {
     padding-left: 0;
     list-style: none;
-    height: 50vh; /* view port height: Chiều cao theo màn hình. Ở đây là 50% */
+    max-height: 50vh; /* view port height: Chiều cao theo màn hình. Ở đây là 50% */
     overflow: auto;
     width: 100%;
 }
@@ -746,6 +844,13 @@
 .header__cart-item-remove:hover {
     color: var(--primary-color);
     cursor: pointer;
+}
+.header__cart-item-body .header__cart-item-bin {
+    display: none;
+    position: relative;
+    top: -3px;
+    right: -5px;
+    font-size: 2rem;
 }
 .header__cart-view-cart {
     float: right;
@@ -866,6 +971,9 @@
 .header__search-input:focus ~ .header__search-history {
     display: block;
 }
+.modal {
+    display: none;
+}
 /* Search history */
 .header__search-history {
     display: none;
@@ -906,16 +1014,111 @@
     line-height: 28px;
     color: rgb(90, 90, 90);
 }
+.header__cart-user {
+    display: none;
+}
+/* Header sort bar */
+.header__sort-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    height: var(--header-sort-bar-height);
+    list-style: none;
+    background-color: var(--white-color);
+    margin: 0; /* Xóa mặc định của thẻ ul */
+    padding-left: 0; /* Xóa mặc định của thẻ ul */
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: none;
+}
+
+
+.header__sort-item {
+    flex: 1;
+}
+
+
+.header__sort-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    line-height: var(--header-sort-bar-height);
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+.header__sort-link::before {
+    content: "";
+    position: absolute;
+    border-left: 1px solid #e5e5e5;
+    height:60%;
+    top: 50%;
+    right: -15px;
+    left:0;
+    transform: translateY(-50%);
+}
+.header__sort-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    top: 100%;
+    left: 0;
+    right:0;
+    border-radius: 2px;
+    display: none;
+}
+.header__sort-item:hover .header__sort-link::after {
+    display: block;
+    transform-origin: left;
+    animation: UnderActive ease-in 0.3s;
+    transition: 0.5s;
+}
+@keyframes UnderActive {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+}
+.header_-sort-item:first-child .header__sort-link::before{
+    display: none;
+}
+.header__sort-item--active .header__sort-link {
+    color: var(--primary-color);
+}
+.header__sort-bar-icon-up {
+    display: none;
+    position: absolute;
+    top: 20%;
+    right: 9%;
+    font-size: 1.8rem;
+    color: var(--text-color);
+
+}
+.header__sort-bar-icon-down {
+    display: none;
+    position: absolute;
+    top: 45%;
+    right: 9%;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
 /* App container */
 .app__container {
     background-color: #F5F5F5;
 }
-.app__content {
-    padding-top: 36px;
-}
 .category {
     border-radius: 2px;
     background-color: var(--white-color);
+    margin-top: 40px;
 }
 .category-heading {
     display: flex;
@@ -981,6 +1184,57 @@
     color: var(--primary-color);
     /* transform: translateX(10px); */
 }
+/* Mobile category */
+.mobile-category {
+    display: none;
+}
+
+.mobile-category__list {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.mobile-category__list::-webkit-scrollbar {
+    display: none;
+}
+.mobile-category__item {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category-link{
+    background-color: #87AFD8;
+}
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category-link{
+    background-color: #76C9BD;
+}
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category-link{
+    background-color: #88CF81;
+}
+.mobile-category-link {
+    --line-height: 2rem;
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    line-height: calc(var(--line-height) * 2);
+    text-align: center;
+    width: 110px;
+    height: calc(var(--line-height) * 2);
+    overflow: hidden;
+    display: block;
+    border-radius: 4px;
+    font-weight: 300;
+    display: -webkit-box;;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    padding: 0 3px;
+}
+
 /* Home soft + filter */
 .home-filter__btn {
     margin: 0 12px 0 0;
@@ -991,6 +1245,7 @@
     border-radius: 2px;
     background-color: #EDEDED;
     padding: 12px 22px;
+    margin-top: 40px;
 }
 .home-filter__title {
     font-size: 1.4rem;
@@ -1230,12 +1485,14 @@ i.home__product-item__like-icon-fill {
 }
 .home-product__pagination {
     margin: 50px 0 32px 0;
+    padding-left: 0;
 }
 /* Footer */
 .footer {
     border-top: 4px solid var(--primary-color);
     padding-top: 20px;
     background-color: var(--white-color);
+    overflow: hidden;
 }
 .footer__heading {
     font-size: 1.3rem;
@@ -1291,8 +1548,11 @@ i.home__product-item__like-icon-fill {
     margin-right: 20px;
 }
 .footer__download-apps-img {
+    display: flex;
+    flex-wrap: wrap;
     height:20px;
     object-fit: contain;
+    margin-bottom: 8px;
 }
 .footer__download-apps-link {
     color: transparent;
@@ -1364,5 +1624,4 @@ i.home__product-item__like-icon-fill {
     font-size: 1.2rem;
 }
 
-
-/* Search link favicon html */
+/* Search link favicon html để đổi ảnh page */
